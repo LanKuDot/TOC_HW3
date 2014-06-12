@@ -1,7 +1,8 @@
 /* The JSON data is real-price housing information in Taiwan.
  * This program would get only data specified. User could decide
- * which data would get by appointing 鄉鎮市區, 路段, and 交易年月.
+ * which data would get by appointing 鄉鎮市區, 路段, and 交易年.
  * Then output the average sale price of the specified data.
+ * Run: java -cp ".:jason.jar" TocHW3 <鄉鎮市區> <路段> <交易年>
  */
 
 import java.io.IOException;
