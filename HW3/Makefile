@@ -18,8 +18,11 @@ default: classes
 
 classes: $(CLASSES:.java=.class)
 
-run: default
-	$(JRUN) $(JAR) $(MAINCLASS) http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 金山寺 淹水啦 123
+test1: default
+	$(JRUN) $(JAR) $(MAINCLASS) http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 文山區 辛亥路 103
+
+test2: default
+	$(JRUN) $(JAR) $(MAINCLASS) http://www.datagarage.io/api/5365dee31bc6e9d9463a0057 大安區 復興南路 103 
 
 clean:
 	$(RM) *.class
