@@ -13,7 +13,7 @@ public class JsonWebReader
 {
 	/* parsing the json file from the requested URL,
 	 * and return a JSONArray which stores multiple json entries. */
-	public static JSONArray readJsonFromURL( String url )
+	public JSONArray readJsonFromURL( String url )
 		throws IOException, JSONException
 	{
 		InputStream input = new URL(url).openStream();
