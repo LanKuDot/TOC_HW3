@@ -1,4 +1,5 @@
-/* Parsing the json file from the requested URL */
+/* Parsing the json file from the requested URL, and
+ * parsing data with regex. */
 
 import java.io.BufferedReader;
 import java.io.IOException;
