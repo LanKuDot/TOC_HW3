@@ -25,8 +25,7 @@ public class TocHW3
 
 		/* Generate regex string from input argument */
 		String regex = "(?dm)\\{.*" + request.zone + ".*"
-			+ request.zone + request.road + ".*"
-			+ "\"交易年月\":" + request.year + ".*\\}";
+			+ request.zone + request.road + ".*\\}";
 
 		try
 		{
@@ -35,16 +34,22 @@ public class TocHW3
 			JSONArray data = webReader.readJsonFromURL( request.URL, regex );
 
 			/* Calculating the average sale price */
-			int totalEntries = 0;      // the num of non-empty entries 
+			int totalEntries = 0;      // the num of non-empty entries
 			JSONObject element;        // Get the entry from JSONArray
+			int yearCompare = ( request.year - 1 ) * 100 + 99;
+			                           // Year format: (Integer) YYYMM
 			for ( int i = 0; i < data.length(); ++i )
 			{
 				// If the JSONObject is not null element, then get the sale price.
 				if ( !data.isNull(i) )
 				{
-					++totalEntries;
 					element = data.getJSONObject(i);
-					avg_price += ((Integer)element.get( "總價元" )).doubleValue();
+					// Take the house data which was saled at/after the Year.
+					if ( ((Integer)element.get( "交易年月" )).intValue() > yearCompare )
+					{
+						++totalEntries;
+						avg_price += ((Integer)element.get( "總價元" )).doubleValue();
+					}
 				}
 			}
 
