@@ -23,15 +23,11 @@ public class TocHW3
 		DataRequest request = new DataRequest(
 				args[0], args[1], args[2], Integer.parseInt( args[3] ) );
 
-		/* Generate regex string from input argument */
-		String regex = "(?dm)\\{.*" + request.zone + ".*"
-			+ request.zone + request.road + ".*\\}";
-
 		try
 		{
 			/* Parsing JSON file with regex */
 			JsonWebReader webReader = new JsonWebReader();
-			JSONArray data = webReader.readJsonFromURL( request.URL, regex );
+			JSONArray data = webReader.readJsonFromURL( request.URL, request );
 
 			/* Calculating the average sale price */
 			int totalEntries = 0;      // the num of non-empty entries

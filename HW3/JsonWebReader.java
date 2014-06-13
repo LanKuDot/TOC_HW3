@@ -16,15 +16,16 @@ public class JsonWebReader
 {
 	/* parsing the json file from the requested URL with regex,
 	 * and return a JSONArray which stores multiple json entries. */
-	public JSONArray readJsonFromURL( String url, String regexStr )
+	public JSONArray readJsonFromURL( String url, DataRequest request )
 		throws IOException, JSONException
 	{
 		InputStream input = new URL(url).openStream();
+
 		try
 		{
 			BufferedReader reader = new BufferedReader(
 					new InputStreamReader( input, Charset.forName("UTF-8") ) );
-			JSONArray json = new JSONArray( readWithRegex( reader, regexStr ) );
+			JSONArray json = new JSONArray( readWithRegex( reader, request ) );
 			return json;
 		}
 		finally
@@ -33,12 +34,16 @@ public class JsonWebReader
 		}
 	}
 
-	private String readWithRegex( BufferedReader reader, String regexStr )
+	private String readWithRegex( BufferedReader reader, DataRequest request )
 		throws IOException
 	{
 		StringBuilder sb = new StringBuilder();  // Store the parsed string
 		String buffer;     // Buffer the string read from BufferedReader
 		boolean noMatch = true;  // If there is no content matched
+
+		/* Generate regex string from input argument */
+		String regexStr = "(?dm)\\{.*" + request.zone + ".*"
+			+ request.zone + request.road + ".*\\}";
 
 		/* The regex */
 		Pattern pattern = Pattern.compile( regexStr );
