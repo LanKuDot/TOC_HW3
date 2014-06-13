@@ -3,7 +3,7 @@ JRUN = java
 JFLAGS = -g
 JAR = -cp ".:json.jar"
 
-MAINCLASS = TocHW3
+MAINCLASS = TocHw3
 
 .SUFFIXES: .java .class
 .java.class:
@@ -12,7 +12,7 @@ MAINCLASS = TocHW3
 CLASSES = \
 		  DataRequest.java \
 		  JsonWebReader.java \
-		  TocHW3.java
+		  TocHw3.java
 
 default: classes
 

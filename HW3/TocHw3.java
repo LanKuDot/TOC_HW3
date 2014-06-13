@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import org.json.*;
 
-public class TocHW3
+public class TocHw3
 {
 	public static void main( String[] args )
 	{
