@@ -20,6 +20,11 @@ public class TocHw3
 		double avg_price = 0.0;      // The avarage sale price of matching data
 
 		/* Get the arguments from command line */
+		if ( args.length != 4 )	// invalid arguments
+		{
+			System.out.println( "Arguments: <URL> <District> <Road> <Year>" );
+			return;
+		}
 		DataRequest request = new DataRequest(
 				args[0], args[1], args[2], Integer.parseInt( args[3] ) );
 
