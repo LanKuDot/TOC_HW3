@@ -54,7 +54,10 @@ public class TocHw3
 				}
 			}
 
-			avg_price = avg_price / (double) totalEntries;
+			if ( totalEntries == 0 )	// Divide by 0
+				avg_price = 0;
+			else
+				avg_price = avg_price / (double) totalEntries;
 
 			System.out.println( (int)avg_price );
 		}
